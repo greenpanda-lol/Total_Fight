@@ -23,8 +23,3 @@ def run_tutorial():
             if hp_madarijeszto <= 0:
                 break
                 print("Vége a Tutorialnak!")
-        else:
-            print("ERROR")
-
-
-run_tutorial()
