@@ -24,3 +24,23 @@ elif vhsz_hos_szam == 4:
     hos = "Csiganő"
 
 print()
+
+xp = 0
+szint = 1
+
+def jatek_menu(xp, szint):
+    print("TE:")
+    print(f"Hős: {hos}")
+    print(f"XP: {xp}")
+    print()
+
+    for haladas in range(1, 6):
+        if szint == haladas:
+            print("✹", end="")
+        elif szint < haladas:
+            print("✓", end="")
+        elif szint > haladas:
+            print("╳", end="")
+    
+    if input("A következő szint indításához: s") == "s":
+        print("harc")
