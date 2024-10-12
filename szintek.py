@@ -1,42 +1,58 @@
 import random
-from game import *
+from game import hos
 
-if hos == "Kígyó Harcos":
-    hp = 45
-    fegyver = "(kk) Kígyó Kard"
-    fegyver_sebzes = 3
-    kepesseg = "(k) Kígyó"
-    kepesseg_betoltes = 3
-    kepesseg_sebzes = 10
-elif hos == "Bamba Marha Lovag":
-    hp = 70
-    fegyver = "(vk) Vaskard"
-    fegyver_sebzes = 2
-    kepesseg = ""
-    kepesseg_betoltes = 10000000
-    kepesseg_sebzes = "0"
-elif hos == "Varázsló Henrik":
-    hp = 50
-    fegyver = "(vb) Varázsbot"
-    fegyver_sebzes = 1
-    kepesseg = "(t) Tornádó"
-    kepesseg_betoltes = 4
-    kepesseg_sebzes = 25
-elif hos == "Csiganő":
-    hp = 40
-    fegyver = "(csk) Csiga Kard"
-    fegyver_sebzes = 4
-    kepesseg = "(csh) Csiga Halál"
-    kepesseg_betoltes = 2
-    kepesseg_sebzes = 15
+def adatok():
+    if hos == "Kígyó Harcos":
+        hp = 45
+        fegyver = "(kk) Kígyó Kard"
+        fegyver_sebzes = 3
+        kepesseg = "(k) Kígyó"
+        kepesseg_betoltes = 3
+        kepesseg_sebzes = 10
+    elif hos == "Bamba Marha Lovag":
+        hp = 70
+        fegyver = "(vk) Vaskard"
+        fegyver_sebzes = 2
+        kepesseg = ""
+        kepesseg_betoltes = 10000000
+        kepesseg_sebzes = "0"
+    elif hos == "Varázsló Henrik":
+        hp = 50
+        fegyver = "(vb) Varázsbot"
+        fegyver_sebzes = 1
+        kepesseg = "(t) Tornádó"
+        kepesseg_betoltes = 4
+        kepesseg_sebzes = 25
+    elif hos == "Csiganő":
+        hp = 40
+        fegyver = "(csk) Csiga Kard"
+        fegyver_sebzes = 4
+        kepesseg = "(csh) Csiga Halál"
+        kepesseg_betoltes = 2
+        kepesseg_sebzes = 15
 
-fegyverek = []
-maxhp = hp
-fegyverek.append(fegyver)
-kepesseg_betoltodott = 0
+    fegyverek = []
+    maxhp = hp
+    fegyverek.append(fegyver)
+    kepesseg_betoltodott = 0
+    return hos
+    return hp
+    return maxhp
+    return kepesseg_betoltodott
+    return kepesseg_betoltes
+    return fegyver
+    return fegyverek
+    return fegyver_sebzes
+    return kepesseg_sebzes
 
 def harc_jatekos_statisztikak():
-    global hp, hos, maxhp, kepesseg_betoltes, kepesseg_betoltodott, fegyverek
+    adatok()
+    hos = adatok()[0]
+    hp = adatok()[1]
+    maxhp = adatok()[2]
+    kepesseg_betoltodott = adatok()[3]
+    kepesseg_betoltes = adatok()[4]
+    fegyverek = adatok[5]
     print(f"TE, AZAZ {hos}")
     print(f"HP: {hp}/{maxhp}")
     print(f"A képesség betöltődése: {kepesseg_betoltodott}/{kepesseg_betoltes}")
@@ -44,7 +60,12 @@ def harc_jatekos_statisztikak():
     print()
 
 def tamadas():
-    global hos, kepesseg_betoltodott, kepesseg_betoltes
+    adatok
+    kepesseg_betoltodott = adatok()[3]
+    kepesseg_betoltes = adatok()[4]
+    fegyverek = adatok()[6]
+    fegyver_sebzes = adatok()[7]
+    kepesseg_sebzes = adatok()[8]
     print(f"Mivel támadsz? {fegyverek} (Zárójelbe leírtuk, hogy melyik billentyűt kell lenyomni, a támadáshoz)")
     tamado_billentyu = input("")
     if tamado_billentyu == "kk" and hos == "Kígyó Harcos":
@@ -64,7 +85,9 @@ def tamadas():
     return minuszhp
 
 def level_1():
-    global hp, maxhp, minuszhp, xp
+    hp = adatok()[1]
+    maxhp = adatok[2]
+    kepesseg_betoltes = adatok()[4]
     hp = maxhp
     kepesseg_betoltodott = 0
     hp_nyalkaszorny = 25
@@ -100,13 +123,14 @@ def level_1():
         stat_nyalkaszorny()
     if hp <= 0:
         if input("Meghaltál! A nyálkaszörny legyőzött. Lépj vissza a menübe, az m gomb megnyomásával.") == "m":
+            from game import jatek_menu
             jatek_menu()
         else:
             print("ERROR")
     elif hp_nyalkaszorny <= 0:
         print("Sikeresen legyőzted a Nyálkaszörnyet!")
         xp += 1200
-        print(f"+1200 XP")
+        print(f"+1200 XP (JELENLEG NEM MENTŐDIK LE!)")
         if input("Lépj vissza a menübe, az m gomb megnyomásával.") == "m":
             jatek_menu()
         else: 

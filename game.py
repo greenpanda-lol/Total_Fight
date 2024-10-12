@@ -1,7 +1,5 @@
 from tutorial import run_tutorial
 
-
-
 run_tutorial()
 print("Vége a tutorialnak!")
 # Tutorial
@@ -27,11 +25,10 @@ elif vhsz_hos_szam == 4:
 
 print()
 
-xp = 0
 szint = 1
 
 def jatek_menu():
-    global hos
+    xp = "A jelenlegi verzió nem tartalmazza az XP-t."
     print("TE:")
     print(f"Hős: {hos}")
     print(f"XP: {xp}")
@@ -46,6 +43,9 @@ def jatek_menu():
             print("╳", end="")
     
     if input("A következő szint indításához: s") == "s":
+        from szintek import adatok
+        from szintek import harc_jatekos_statisztikak
+        from szintek import tamadas
         from szintek import level_1
         level_1()
 
